@@ -12,7 +12,7 @@ public class Livro {
     private long id;
 
     @OneToMany (mappedBy = "livro")
-    private List<Examplar> exemplares;
+    private List<Exemplar> exemplares;
 
     @Column(name = "titulo", nullable = false)
     private String titulo;
