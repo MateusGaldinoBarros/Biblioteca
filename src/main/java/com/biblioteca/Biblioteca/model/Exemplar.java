@@ -1,6 +1,9 @@
 package com.biblioteca.Biblioteca.model;
 
 import jakarta.persistence.*;
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Exemplar")
@@ -9,9 +12,12 @@ public class Exemplar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "livro_id", nullable = false)
     private Livro livro;
+
+    @OneToMany(mappedBy = "Exemplar")
+    private List <Emprestimo> emprestimos;
 
     @Column(name = "status", nullable = false)
     private String status;
