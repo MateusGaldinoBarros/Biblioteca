@@ -14,6 +14,9 @@ public class Livro {
     @OneToMany (mappedBy = "livro")
     private List<Exemplar> exemplares;
 
+    @Column(name = "api_external_id")
+    private long api_external_id;
+
     @Column(name = "titulo", nullable = false)
     private String titulo;
 
