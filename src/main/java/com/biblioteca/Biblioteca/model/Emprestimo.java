@@ -15,6 +15,10 @@ public class Emprestimo {
     @JoinColumn(name = "exemplar_id", nullable = false)
     private Exemplar exemplar;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario_id;
+
     @Column(name = "data_emprestimo")
     private LocalDate data_emprestimo;
 
@@ -62,5 +66,13 @@ public class Emprestimo {
 
     public void setData_devolucao_real(LocalDate data_devolucao_real) {
         this.data_devolucao_real = data_devolucao_real;
+    }
+
+    public Usuario getUsuario_id() {
+        return usuario_id;
+    }
+
+    public void setUsuario_id(Usuario usuario_id) {
+        this.usuario_id = usuario_id;
     }
 }
