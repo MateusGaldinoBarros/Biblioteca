@@ -17,16 +17,21 @@ public class Emprestimo {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario_id;
-
+    private Usuario usuario;
     @Column(name = "data_emprestimo")
     private LocalDate data_emprestimo;
 
-    @Column(name = "data_devolucao_prevista")
+    @Column(name = "data_devolucao_prevista", nullable = false)
     private LocalDate data_devolucao_prevista;
 
     @Column(name = "data_devolucao_real")
     private LocalDate data_devolucao_real;
+
+    @Column(name = "status", nullable = false)
+    private String status;
+
+    @Column(name = "multa_paga")
+    private boolean multa_paga;
 
     public long getId() {
         return id;
@@ -68,11 +73,31 @@ public class Emprestimo {
         this.data_devolucao_real = data_devolucao_real;
     }
 
-    public Usuario getUsuario_id() {
-        return usuario_id;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuario_id(Usuario usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuario_id(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public boolean isMulta_paga() {
+        return multa_paga;
+    }
+
+    public void setMulta_paga(boolean multa_paga) {
+        this.multa_paga = multa_paga;
     }
 }

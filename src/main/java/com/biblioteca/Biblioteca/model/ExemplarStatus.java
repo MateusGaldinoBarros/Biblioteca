@@ -1,6 +1,6 @@
 package com.biblioteca.Biblioteca.model;
 
-public enum Status {
+public enum ExemplarStatus {
     EMPRESTADO,
     DISPONIVEL
 }

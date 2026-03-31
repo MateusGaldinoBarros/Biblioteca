@@ -22,6 +22,9 @@ public class Exemplar {
     @Column(name = "status", nullable = false)
     private String status;
 
+    @Column(name = "multa")
+    private double multa;
+
     public long getId() {
         return id;
     }
@@ -45,4 +48,22 @@ public class Exemplar {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
+
+    public double getMulta() {
+        return multa;
+    }
+
+    public void setMulta(double multa) {
+        this.multa = multa;
+    }
+
+
 }

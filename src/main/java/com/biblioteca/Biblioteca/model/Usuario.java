@@ -3,7 +3,7 @@ package com.biblioteca.Biblioteca.model;
 import jakarta.persistence.*;
 
 import java.util.List;
-
+@Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
