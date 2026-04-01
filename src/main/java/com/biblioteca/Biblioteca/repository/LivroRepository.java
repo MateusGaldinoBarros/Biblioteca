@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {
+    boolean existsByApi_external_id(long Api_external_id);
 }

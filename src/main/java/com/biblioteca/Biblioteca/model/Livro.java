@@ -14,29 +14,27 @@ public class Livro {
     @OneToMany (mappedBy = "livro")
     private List<Exemplar> exemplares;
 
-    @Column(name = "api_external_id")
-    private long api_external_id;
+    @Column(name = "api_External_Id")
+    private long api_External_Id;
 
     @Column(name = "titulo", nullable = false)
     private String titulo;
 
-    @Column(name = "autor", nullable = false)
-    private String autor;
-
-    @Column(name = "isbn", nullable = false)
-    private String isbn;
+    @ElementCollection
+    @CollectionTable(name = "autores")
+    @Column(name = "nome")
+    private List<String> autores;
 
     @Column(name = "colum_url", nullable = false)
-    private String colum_url;
+    private String colum_Url;
 
     public Livro(){
     }
 
-    public Livro(String titulo, String autor, String isbn, String colum_url){
+    public Livro(String titulo, List autores, String colum_Url){
         this.titulo = titulo;
-        this.autor = autor;
-        this.isbn = isbn;
-        this.colum_url = colum_url;
+        this.autores = autores;
+        this.colum_Url = colum_Url;
     }
 
 
@@ -56,27 +54,19 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
-        return autor;
+    public List<String> getAutor() {
+        return autores;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setAutores(List <String> autores) {
+        this.autores = this.autores;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getColum_url() {
-        return colum_url;
+    public String getColum_Url() {
+        return colum_Url;
     }
 
     public void setColum_url(String colum_url) {
-        this.colum_url = colum_url;
+        this.colum_Url = colum_Url;
     }
 }
