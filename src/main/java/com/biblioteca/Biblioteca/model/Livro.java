@@ -14,8 +14,8 @@ public class Livro {
     @OneToMany (mappedBy = "livro")
     private List<Exemplar> exemplares;
 
-    @Column(name = "api_External_Id")
-    private long api_External_Id;
+    @Column(name = "api_external_Id")
+    private long apiExternalId;
 
     @Column(name = "titulo", nullable = false)
     private String titulo;
@@ -25,16 +25,16 @@ public class Livro {
     @Column(name = "nome")
     private List<String> autores;
 
-    @Column(name = "colum_url", nullable = false)
-    private String colum_Url;
+    @Column(name = "capaId", nullable = false)
+    private long capaId;
 
     public Livro(){
     }
 
-    public Livro(String titulo, List autores, String colum_Url){
+    public Livro(String titulo, List autores, long capaId){
         this.titulo = titulo;
         this.autores = autores;
-        this.colum_Url = colum_Url;
+        this.capaId = capaId;
     }
 
 
@@ -59,14 +59,24 @@ public class Livro {
     }
 
     public void setAutores(List <String> autores) {
-        this.autores = this.autores;
+        this.autores = autores;
     }
 
-    public String getColum_Url() {
-        return colum_Url;
+    public long getCapaId() {
+        return capaId;
     }
 
-    public void setColum_url(String colum_url) {
-        this.colum_Url = colum_Url;
+    public void setCapaId(long capaId) {
+        this.capaId = capaId;
     }
+
+    public long getApiExternalId() {
+        return apiExternalId;
+    }
+
+    public void setApiExternalId(long apiExternalId) {
+        this.apiExternalId = apiExternalId;
+    }
+
+
 }
