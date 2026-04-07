@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 
 @RestController
@@ -20,12 +23,10 @@ public class LivroController {
         this.livroService = livroService;
     }
 
-    public LivroService getLivroService() {
-        return livroService;
-    }
-
     @PostMapping()
-    public LivroDto livroDto(@RequestBody LivroDto livroDto) {
-
+    public ResponseEntity<LivroDto> criarlivro(@RequestBody LivroDto livroDto) {
+        LivroDto livroCriado = livroService.salvarLivro(livroDto);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(livroCriado.getId()).toUri();
+        return ResponseEntity.created(location).body(livroCriado);
     }
 }

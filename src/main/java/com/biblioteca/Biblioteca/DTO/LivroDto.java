@@ -3,6 +3,8 @@ package com.biblioteca.Biblioteca.DTO;
 import java.util.List;
 
 public class LivroDto {
+    private long id;
+
     private long apiExternalId;
 
     private String titulo;
@@ -51,5 +53,13 @@ public class LivroDto {
 
     public void setCapaId(long capaId) {
         this.capaId = capaId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
