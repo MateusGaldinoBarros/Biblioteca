@@ -16,7 +16,7 @@ public class Exemplar {
     @JoinColumn(name = "livro_id", nullable = false)
     private Livro livro;
 
-    @OneToMany(mappedBy = "Exemplar")
+    @OneToMany(mappedBy = "exemplar")
     private List <Emprestimo> emprestimos;
 
     @Column(name = "status", nullable = false)
