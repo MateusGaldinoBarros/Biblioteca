@@ -24,7 +24,7 @@ public class LivroService {
             throw new LivroJaExisteException("LIVRO JÁ EXISTE NO ACERVO");
         }else {
             Livro dtoEntity = livroMapper.toEntity(dto);
-            livroRepository.save(dtoEntity);
+            dtoEntity = livroRepository.save(dtoEntity);
             return livroMapper.toDto(dtoEntity);
         }
     }

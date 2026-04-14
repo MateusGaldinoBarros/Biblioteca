@@ -1,6 +1,7 @@
 package com.biblioteca.Biblioteca.exception;
 
 import com.biblioteca.Biblioteca.exception.exceptions.LivroJaExisteException;
+import com.biblioteca.Biblioteca.exception.exceptions.LivroNaoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,12 @@ public class GlobalExceptionHandler {
         String erro = ex.getMessage();
 
         return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+    }
+    @ExceptionHandler
+    public ResponseEntity<String> handleNotFound(LivroNaoEncontradoException ex) {
+        String erro = ex.getMessage();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
     }
 
 }

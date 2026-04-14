@@ -2,13 +2,13 @@ package com.biblioteca.Biblioteca.DTO;
 
 public class ExemplarDto {
     private long id;
-    private long livro_id;
+    private long livroId;
     private String status;
 
 
-    public ExemplarDto(long id, long livro_id, String status) {
+    public ExemplarDto(long id, long livroId, String status) {
         this.id = id;
-        this.livro_id = livro_id;
+        this.livroId = livroId;
         this.status = status;
     }
 
@@ -23,12 +23,12 @@ public class ExemplarDto {
         this.id = id;
     }
 
-    public long getLivro_id() {
-        return livro_id;
+    public long getLivroId() {
+        return livroId;
     }
 
-    public void setLivro_id(long livro_id) {
-        this.livro_id = livro_id;
+    public void setLivroId(long livroId) {
+        this.livroId = livroId;
     }
 
     public String getStatus() {
