@@ -1,11 +1,9 @@
 package com.biblioteca.Biblioteca.service;
 
 import com.biblioteca.Biblioteca.DTO.ExemplarDto;
-import com.biblioteca.Biblioteca.DTO.LivroDto;
 import com.biblioteca.Biblioteca.exception.exceptions.LivroNaoEncontradoException;
 import com.biblioteca.Biblioteca.mapper.ExemplarMapper;
 import com.biblioteca.Biblioteca.model.Exemplar;
-import com.biblioteca.Biblioteca.model.Livro;
 import com.biblioteca.Biblioteca.repository.ExemplarRepository;
 import com.biblioteca.Biblioteca.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
