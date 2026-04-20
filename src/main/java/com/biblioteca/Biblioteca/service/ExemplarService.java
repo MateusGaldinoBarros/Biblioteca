@@ -9,6 +9,9 @@ import com.biblioteca.Biblioteca.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ExemplarService {
     private final ExemplarRepository exemplarRepository;
@@ -22,12 +25,18 @@ public class ExemplarService {
         this.exemplarMapper = exemplarMapper;
     }
 
-    public ExemplarDto criarExemplar(ExemplarDto exemplarDto) {
+    public List<ExemplarDto> criarExemplares(ExemplarDto exemplarDto, int quantidade) {
         if (livroRepository.existsById(exemplarDto.getLivroId())) {
-            Exemplar dtoEntity = exemplarMapper.toEntity(exemplarDto);
-            dtoEntity.setStatus("DISPONIVEL");
-            dtoEntity = exemplarRepository.save(dtoEntity);
-            return exemplarMapper.toDto(dtoEntity);
+            List<ExemplarDto> exemplarDtoList = new ArrayList<>();
+            for (int i = 0; i < quantidade ; i++) {
+                Exemplar dtoEntity = exemplarMapper.toEntity(exemplarDto);
+                dtoEntity.setStatus("DISPONIVEL");
+                dtoEntity = exemplarRepository.save(dtoEntity);
+                ExemplarDto exemplarMapperDto= exemplarMapper.toDto(dtoEntity);
+                exemplarDtoList.add(exemplarMapperDto);
+            }
+            return exemplarDtoList;
+
         }else {
             throw new LivroNaoEncontradoException("LIVRO NÃO ENCONTRADO NO BANCO DE DADOS");
         }

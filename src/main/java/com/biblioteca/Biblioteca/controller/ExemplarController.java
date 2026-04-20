@@ -1,17 +1,11 @@
 package com.biblioteca.Biblioteca.controller;
 
 import com.biblioteca.Biblioteca.DTO.ExemplarDto;
-import com.biblioteca.Biblioteca.model.Exemplar;
 import com.biblioteca.Biblioteca.service.ExemplarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/exemplar")
@@ -24,10 +18,9 @@ public class ExemplarController {
     }
 
     @PostMapping()
-    public ResponseEntity<Exemplar> criarExemplares(@RequestBody ExemplarDto exemplarDto, UriComponentsBuilder uriComponentsBuilder) {
-        ExemplarDto exemplarCriado = exemplarService.criarExemplar(exemplarDto);
+    public ResponseEntity<List<ExemplarDto>> criarExemplares(@RequestParam int quantidade, @RequestBody ExemplarDto exemplarDto) {
+        List<ExemplarDto> exemplaresCriados = exemplarService.criarExemplares(exemplarDto, quantidade);
 
-
-        //TODO: terminar de criar o metodo post e fazer um loop com a quantidade de exemplares
+        return ResponseEntity.ok(exemplaresCriados);
     }
 }
