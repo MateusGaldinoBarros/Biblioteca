@@ -22,8 +22,8 @@ public class LivroExemplarController {
     }
 
     @PostMapping("/exemplar/{quantidade}")
-    public ResponseEntity<List<ExemplarDto>> criarExemplares(@PathVariable int quantidade, @RequestBody ExemplarDto exemplarDto) {
-        List<ExemplarDto> exemplaresCriados = exemplarService.criarExemplares(exemplarDto, quantidade);
+    public ResponseEntity<List<ExemplarDto>> criarExemplares(@PathVariable int quantidade, @PathVariable long livroId) {
+        List<ExemplarDto> exemplaresCriados = exemplarService.criarExemplares(livroId, quantidade);
 
         return ResponseEntity.ok(exemplaresCriados);
     }

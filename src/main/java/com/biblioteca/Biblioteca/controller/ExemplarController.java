@@ -17,10 +17,4 @@ public class ExemplarController {
         this.exemplarService = exemplarService;
     }
 
-    @PostMapping("/{quantidade}")
-    public ResponseEntity<List<ExemplarDto>> criarExemplares(@PathVariable int quantidade, @RequestBody ExemplarDto exemplarDto) {
-        List<ExemplarDto> exemplaresCriados = exemplarService.criarExemplares(exemplarDto, quantidade);
-
-        return ResponseEntity.ok(exemplaresCriados);
-    }
 }

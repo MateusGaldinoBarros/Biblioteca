@@ -22,8 +22,9 @@ public class Exemplar {
     @Column(name = "status", nullable = false)
     private String status;
 
-    @Column(name = "multa")
-    private double multa;
+    public Exemplar(Livro livro) {
+        this.livro = livro;
+    }
 
     public long getId() {
         return id;
@@ -57,13 +58,6 @@ public class Exemplar {
         this.emprestimos = emprestimos;
     }
 
-    public double getMulta() {
-        return multa;
-    }
-
-    public void setMulta(double multa) {
-        this.multa = multa;
-    }
 
 
 }
