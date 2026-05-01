@@ -1,12 +1,8 @@
 package com.biblioteca.Biblioteca.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "livros")
@@ -22,8 +18,10 @@ public class Livro {
     @Column(nullable = false)
     private String titulo;
 
-    @Column(nullable = false)
-    private String autores;
+    @ElementCollection
+    @CollectionTable(name = "livro_autores", joinColumns = @JoinColumn(name = "livro_id"))
+    @Column(name = "autor", nullable = false)
+    private List<String> autores;
 
     private String editora;
 
@@ -35,7 +33,7 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(Long id, String isbn, String titulo, String autores, String editora, LocalDate dataPublicacao, Integer quantidade) {
+    public Livro(Long id, String isbn, String titulo, List<String> autores, String editora, LocalDate dataPublicacao, Integer quantidade) {
         this.id = id;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -69,11 +67,11 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public String getAutores() {
+    public List<String> getAutores() {
         return autores;
     }
 
-    public void setAutores(String autores) {
+    public void setAutores(List<String> autores) {
         this.autores = autores;
     }
 
