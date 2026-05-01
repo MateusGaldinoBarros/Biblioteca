@@ -1,49 +1,64 @@
 package com.biblioteca.Biblioteca.model;
 
-import jakarta.persistence.*;
-
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import java.time.LocalDate;
 
 @Entity
-@Table(name="livro")
+@Table(name = "livros")
 public class Livro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @OneToMany (mappedBy = "livro")
-    private List<Exemplar> exemplares;
+    @Column(nullable = false, unique = true)
+    private String isbn;
 
-    @Column(name = "api_external_Id")
-    private long apiExternalId;
-
-    @Column(name = "titulo", nullable = false)
+    @Column(nullable = false)
     private String titulo;
 
-    @ElementCollection
-    @CollectionTable(name = "autores")
-    @Column(name = "nome")
-    private List<String> autores;
+    @Column(nullable = false)
+    private String autores;
 
-    @Column(name = "capaId", nullable = false)
-    private long capaId;
+    private String editora;
 
-    public Livro(){
+    @Column(name = "data_publicacao")
+    private LocalDate dataPublicacao;
+
+    private Integer quantidade;
+
+    public Livro() {
     }
 
-    public Livro(String titulo, List autores, long capaId){
+    public Livro(Long id, String isbn, String titulo, String autores, String editora, LocalDate dataPublicacao, Integer quantidade) {
+        this.id = id;
+        this.isbn = isbn;
         this.titulo = titulo;
         this.autores = autores;
-        this.capaId = capaId;
+        this.editora = editora;
+        this.dataPublicacao = dataPublicacao;
+        this.quantidade = quantidade;
     }
 
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getTitulo() {
@@ -54,29 +69,35 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public List<String> getAutor() {
+    public String getAutores() {
         return autores;
     }
 
-    public void setAutores(List <String> autores) {
+    public void setAutores(String autores) {
         this.autores = autores;
     }
 
-    public long getCapaId() {
-        return capaId;
+    public String getEditora() {
+        return editora;
     }
 
-    public void setCapaId(long capaId) {
-        this.capaId = capaId;
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
 
-    public long getApiExternalId() {
-        return apiExternalId;
+    public LocalDate getDataPublicacao() {
+        return dataPublicacao;
     }
 
-    public void setApiExternalId(long apiExternalId) {
-        this.apiExternalId = apiExternalId;
+    public void setDataPublicacao(LocalDate dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
     }
 
+    public Integer getQuantidade() {
+        return quantidade;
+    }
 
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
 }
