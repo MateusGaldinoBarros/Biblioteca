@@ -31,8 +31,8 @@ class LivroServiceTest {
     @DisplayName("Deve criar um livro com sucesso")
     void deveCriarLivroComSucesso() {
         // Arrange
-        LivroDto dto = new LivroDto("123456", "Título Teste", List.of("Autor"), "Editora", LocalDate.now());
         int quantidade = 10;
+        LivroDto dto = new LivroDto("123456", "Título Teste", List.of("Autor"), "Editora", LocalDate.now(), quantidade);
         
         Livro livroSalvo = new Livro();
         livroSalvo.setId(1L);
@@ -41,12 +41,12 @@ class LivroServiceTest {
         livroSalvo.setAutores(dto.getAutores());
         livroSalvo.setEditora(dto.getEditora());
         livroSalvo.setDataPublicacao(dto.getDataPublicacao());
-        livroSalvo.setQuantidade(quantidade);
+        livroSalvo.setQuantidade(dto.getQuantidade());
 
         when(livroRepository.save(any(Livro.class))).thenReturn(livroSalvo);
 
         // Act
-        Livro resultado = livroService.criarLivro(dto, quantidade);
+        Livro resultado = livroService.criarLivro(dto);
 
         // Assert
         assertNotNull(resultado);
@@ -59,14 +59,13 @@ class LivroServiceTest {
     @DisplayName("Deve lançar LivroNaoCriadoException quando o repositório falhar")
     void deveLancarExceptionQuandoFalhar() {
         // Arrange
-        LivroDto dto = new LivroDto("123456", "Título Teste", List.of("Autor"), "Editora", LocalDate.now());
-        int quantidade = 5;
+        LivroDto dto = new LivroDto("123456", "Título Teste", List.of("Autor"), "Editora", LocalDate.now(), 5);
 
         when(livroRepository.save(any(Livro.class))).thenThrow(new RuntimeException("Erro de banco"));
 
         // Act & Assert
         assertThrows(LivroNaoCriadoException.class, () -> {
-            livroService.criarLivro(dto, quantidade);
+            livroService.criarLivro(dto);
         });
         
         verify(livroRepository, times(1)).save(any(Livro.class));

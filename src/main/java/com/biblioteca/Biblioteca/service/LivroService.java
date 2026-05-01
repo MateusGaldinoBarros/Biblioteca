@@ -15,7 +15,7 @@ public class LivroService {
         this.livroRepository = livroRepository;
     }
 
-    public Livro criarLivro(LivroDto dto, int quantidade) {
+    public Livro criarLivro(LivroDto dto) {
         try {
             Livro livro = new Livro();
             livro.setIsbn(dto.getIsbn());
@@ -23,7 +23,7 @@ public class LivroService {
             livro.setAutores(dto.getAutores());
             livro.setEditora(dto.getEditora());
             livro.setDataPublicacao(dto.getDataPublicacao());
-            livro.setQuantidade(quantidade);
+            livro.setQuantidade(dto.getQuantidade());
             
             return livroRepository.save(livro);
         } catch (Exception e) {

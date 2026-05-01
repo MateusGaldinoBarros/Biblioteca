@@ -9,16 +9,18 @@ public class LivroDto {
     private List<String> autores;
     private String editora;
     private LocalDate dataPublicacao;
+    private Integer quantidade;
 
     public LivroDto() {
     }
 
-    public LivroDto(String isbn, String titulo, List<String> autores, String editora, LocalDate dataPublicacao) {
+    public LivroDto(String isbn, String titulo, List<String> autores, String editora, LocalDate dataPublicacao, Integer quantidade) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autores = autores;
         this.editora = editora;
         this.dataPublicacao = dataPublicacao;
+        this.quantidade = quantidade;
     }
 
     public String getIsbn() {
@@ -59,5 +61,13 @@ public class LivroDto {
 
     public void setDataPublicacao(LocalDate dataPublicacao) {
         this.dataPublicacao = dataPublicacao;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 }
